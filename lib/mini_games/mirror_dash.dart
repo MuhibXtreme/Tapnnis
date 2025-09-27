@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:game/app_background.dart';
 import 'package:game/game_over.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -771,17 +773,22 @@ class _Game1State extends State<Game1> with TickerProviderStateMixin {
       child: Scaffold(
         body: Stack(
           children: [
-            // Base gradient
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 400),
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: themeA,
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                ),
+            Positioned.fill(
+              child: GameWidget(
+                game: AppBackground(),
               ),
             ),
+            // Base gradient
+            // AnimatedContainer(
+            //   duration: const Duration(milliseconds: 400),
+            //   decoration: BoxDecoration(
+            //     gradient: LinearGradient(
+            //       colors: themeA,
+            //       begin: Alignment.topCenter,
+            //       end: Alignment.bottomCenter,
+            //     ),
+            //   ),
+            // ),
             // “Video-like” overlay: moving radial/sweeping highlights
             AnimatedBuilder(
               animation: _bgMotionCtrl,

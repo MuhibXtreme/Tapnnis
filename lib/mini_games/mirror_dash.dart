@@ -83,7 +83,9 @@ class _Game1State extends State<Game1> with TickerProviderStateMixin {
   double obstacleX = 1.3;
   double obstacleWidth = 100;
   double obstacleHeight = 120;
-  double baseObstacleSpeed = 0.010; // scales with score
+  // double baseObstacleSpeed = 0.010;
+  double baseObstacleSpeed = 0.005;
+  // scales with score
   bool showObstacle = true;
   bool hasCollided = false;
   Color scoreBlockColor = const Color(0xFFB3F2FF);
@@ -93,7 +95,8 @@ class _Game1State extends State<Game1> with TickerProviderStateMixin {
   double dangerY = -0.4;
   double dangerSize = 250;
   bool showDanger = false;
-  double dangerSpeedFactor = 1.35;
+  // double dangerSpeedFactor = 1.35;
+  double dangerSpeedFactor = 1.0;
 
   // =========================
   // Power-ups
@@ -250,7 +253,7 @@ class _Game1State extends State<Game1> with TickerProviderStateMixin {
     gravity = 0.0012;
     liftForce = -0.032;
     obstacleWidth = 100;
-    baseObstacleSpeed = 0.010;
+    baseObstacleSpeed = 0.005;
     shields = 0;
     invincible = false;
     scoreMultiplier = 1;
@@ -738,7 +741,9 @@ class _Game1State extends State<Game1> with TickerProviderStateMixin {
 
   double _currentSpeed() {
     // speed scales with score softly
-    final add = (score / 1200).clamp(0.0, 0.025); // gentle ramp
+    // final add = (score / 1200).clamp(0.0, 0.025); // gentle ramp
+    final add = (score / 2000).clamp(0.0, 0.015);
+
     return (baseObstacleSpeed + add);
   }
 
